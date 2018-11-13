@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import classes from "./App.css";
 import Person from "./Person/Person";
 import person from "./Person/Person";
 import Radium from "radium"; //, {StyleRoot} 
@@ -105,18 +105,17 @@ class App extends Component {// lesson 43
       }
 
       //let classes = ['red','bold'].join(' ');// --> string "red bold"
-      const classes = [];
+      const assignedClasses = [];
       if(this.state.persons.length <=2){
-        classes.push("red");
+        assignedClasses.push(classes.red);
       }
       if(this.state.persons.length <=1){
-        classes.push("bold");
+        assignedClasses.push(classes.bold);
       }
-      console.log(classes)
     return (
      
-          <div className="App">
-            <p className={classes.join(" ") }> it is react </p>
+          <div className={classes.App}>
+            <p className={assignedClasses.join(" ") }> it is react </p>
             <button
               style={style}
               onClick={this.togglePersonHandler}
