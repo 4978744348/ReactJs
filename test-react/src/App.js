@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
 import person from "./Person/Person";
-import Radium from "radium";
+import Radium from "radium"; //, {StyleRoot} 
 
 class App extends Component {// lesson 43
   
@@ -72,11 +72,7 @@ class App extends Component {// lesson 43
         border: "1x solid blue",
         padding: "8px",
         cursor: "pointer",
-        margin: "6px",
-        ":hover":{
-          backgroundColor: "lightgreen",
-          color: "black"
-        }
+        margin: "6px"
       }
 
       let personsList = null;
@@ -106,10 +102,6 @@ class App extends Component {// lesson 43
     </div>
         );
         style.backgroundColor = "red";
-        style[":hover"] = {
-          backgroundColor: "lightred",
-          color: "black"
-        };
       }
 
       //let classes = ['red','bold'].join(' ');// --> string "red bold"
@@ -122,22 +114,23 @@ class App extends Component {// lesson 43
       }
       console.log(classes)
     return (
+     
+          <div className="App">
+            <p className={classes.join(" ") }> it is react </p>
+            <button
+              style={style}
+              onClick={this.togglePersonHandler}
+            >
+              Drop-down list
+            </button>
+            {personsList}
+          </div>
       
-      <div className="App">
-        <p className={classes.join(" ") }> it is react </p>
-        <button
-          style={style}
-          onClick={this.togglePersonHandler}
-        >
-          Drop-down list
-        </button>
-        {personsList}
-      </div>
     );
 
     //return React.createElement('div', null, 'h1',"Hello");
   }
 }
 
-export default Radium(App);
+export default App;
  

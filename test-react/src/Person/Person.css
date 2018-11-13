@@ -13,3 +13,9 @@ button{
         cursor: pointer;
         margin: 6px;
 }
+
+/* @media (min-width: 500px){
+    .Person{
+        width:  450px;
+    }
+} */
