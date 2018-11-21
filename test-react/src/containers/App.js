@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import classes from "./App.css";
-import Person from "./Person/Person";
-import person from "./Person/Person";
+//import classes from "./App.css";
+import Person from "../Components/Persons/Person/Person";
 import Radium from "radium"; //, {StyleRoot} 
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {// lesson 43
   
@@ -81,13 +81,14 @@ class App extends Component {// lesson 43
         personsList = (
         <div> 
         {this.state.persons.map((p, index) => {
-          return <Person
-                  delete={() => this.deletePersinHandler(index)}
-                  //click={() => this.deletePersinHandler(index)}
-                  name={p.name}
-                  age={p.age}
-                  key={p.id}
-                  changed={(event) => this.nameChangedHandler(event, p.id)} />
+          return <ErrorBoundary key={p.id}>
+                    <Person
+                      delete={() => this.deletePersinHandler(index)}
+                      //click={() => this.deletePersinHandler(index)}
+                      name={p.name}
+                      age={p.age}
+                      changed={(event) => this.nameChangedHandler(event, p.id)} />
+                  </ErrorBoundary>
                   
             })}
         
@@ -107,14 +108,14 @@ class App extends Component {// lesson 43
       //let classes = ['red','bold'].join(' ');// --> string "red bold"
       const assignedClasses = [];
       if(this.state.persons.length <=2){
-        assignedClasses.push(classes.red);
+        assignedClasses.push("red");
       }
       if(this.state.persons.length <=1){
-        assignedClasses.push(classes.bold);
+        assignedClasses.push("bold");
       }
     return (
      
-          <div className={classes.App}>
+          <div className="App">
             <p className={assignedClasses.join(" ") }> it is react </p>
             <button
               style={style}
@@ -131,5 +132,5 @@ class App extends Component {// lesson 43
   }
 }
 
-export default App;
+export default Radium(App);
  
