@@ -1,5 +1,55 @@
 .main-container{
-  background:red;
-  width:550px;
-  height:550px;
+  background: #E6E3E3;
+  width: 294px;
+  height: 189px;
+}
+
+.input-field{
+  background: #55C407;
+  height: 46%;
+}
+
+.txt-field {
+  background: white;
+  width: 58%;
+  height: 79%;
+  /* padding: 15px; */
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.button{
+  width: 36%;
+  height: 55%;
+  /* padding: 15px; */
+  margin-top: 4%;
+  margin-left: 11%;
+  margin-right: 3%;
+}
+
+.fonts {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+  margin-left: 2%;
+  margin-top: 0.3%;
+}
+
+.value-transfer{
+  margin-left: 3%;
+}
+
+.value-eght{
+  margin-left: 7.37%;
+}
+
+.value-five{
+  margin-left: 7.37%;
+}
+
+.value-three{
+  margin-left: 7.37%;
+}
+
+.value-dot{
+  margin-left: 5.50%;
 }
