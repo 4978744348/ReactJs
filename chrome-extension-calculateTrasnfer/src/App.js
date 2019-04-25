@@ -17,35 +17,40 @@ class App extends Component {
       eighProcent:0,
       fiveProcent:0,
       threeProcent:0,
-      zeroDotThreeProcent:0
+      zeroDot:0
     };
   }
   handleInput = (e) => { 
-    debugger 
     let newState = this.state; 
     newState.total = e.target.value
-    if(e.target.value == ""){
+    if(e.target.value === ""){
+      newState.total = 0;
       newState.eighProcent = 0;
       newState.fiveProcent = 0;
       newState.threeProcent = 0;
-      newState.zeroDotThreeProcent = 0;
+      newState.zeroDot = 0;
       newState.transfer = 0;
     }
     this.setState(newState);
   }
 
-  callCalculate = () => { 
-    debugger   
+  callCalculate = () => {    
     let {total} = this.state;
     let newState = this.state;
     
-    newState.eighProcent = 8.3 * total / 100;
-    newState.fiveProcent = 5 * total / 100;
-    newState.threeProcent = 3 * total / 100;
-    newState.zeroDotThreeProcent = 0.3 * total / 100;
-    newState.transfer = total - newState.eighProcent;
+    newState.eighProcent = Number((8 * total / 100).toFixed(2));
+    newState.fiveProcent = Number((5 * total / 100).toFixed(2));
+    newState.threeProcent = Number((3 * total / 100).toFixed(2));
+    newState.zeroDot =  Number((0.29 * total / 100).toFixed(2));
+    newState.transfer =  Number((total - (newState.eighProcent + newState.zeroDot)).toFixed(2));
 
     this.setState(newState);
+  }
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.callCalculate();
+    }
   }
 
 
@@ -56,7 +61,8 @@ class App extends Component {
               
               <div className="txt-field" style={flexDisplay}>
                 <TextField 
-                  onBlur={this.handleInput}
+                  onChange={this.handleInput}
+                  onKeyPress={this.handleKeyPress}
                   label="Enter the sum"
                   variant="outlined"
                 />
@@ -74,7 +80,10 @@ class App extends Component {
              </div>
 
           </div>  
-          
+
+          <div className="fonts" style={flexDirection_Row}>Total: 
+            <div className="value-total">{this.state.total}</div>
+          </div>
           <div className="fonts" style={flexDirection_Row}>Transfer: 
             <div className="value-transfer">{this.state.transfer}</div>
           </div>   
@@ -87,8 +96,8 @@ class App extends Component {
           <div className="fonts" style={flexDirection_Row}>3%: 
             <div className="value-three">{this.state.threeProcent}</div>
           </div>
-          <div className="fonts" style={flexDirection_Row}>0.3%: 
-            <div className="value-dot">{this.state.zeroDotThreeProcent}</div>
+          <div className="fonts" style={flexDirection_Row}>0.29%: 
+            <div className="value-dot">{this.state.zeroDot}</div>
           </div>
         
 

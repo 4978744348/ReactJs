@@ -1,12 +1,12 @@
 .main-container{
   background: #E6E3E3;
   width: 294px;
-  height: 189px;
+  height: 220px;
 }
 
 .input-field{
   background: #55C407;
-  height: 46%;
+  height: 32%;
 }
 
 .txt-field {
@@ -51,5 +51,9 @@
 }
 
 .value-dot{
-  margin-left: 11.5%;
+  margin-left: 7.5%;
+}
+
+.value-total{
+  margin-left: 14.1%;
 }
